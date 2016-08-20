@@ -83,7 +83,7 @@ namespace Microsoft.SymbolStore.Client
             // Locking the FileSemaphore here ensures that we are done copying the file
             // in case another thread or process is currently writing to it.
             if (fi.Exists)
-                using (FileSemaphore.LockFile(fullPath))
+                using (FileSemaphore.LockFile(fullPath).Result)
                     return fullPath;
 
             return null;
@@ -94,7 +94,7 @@ namespace Microsoft.SymbolStore.Client
             string directory = Path.GetDirectoryName(fullPath);
             Directory.CreateDirectory(directory);
 
-            using (FileSemaphore.LockFile(fullPath))
+            using (FileSemaphore.LockFile(fullPath).Result)
             {
                 try
                 {
@@ -127,7 +127,7 @@ namespace Microsoft.SymbolStore.Client
             try
             {
                 // Lock the file to ensure it's done copying in another thread/process
-                using (FileSemaphore.LockFile(fullPath))
+                using (FileSemaphore.LockFile(fullPath).Result)
                     File.Delete(fullPath);
 
                 return true;

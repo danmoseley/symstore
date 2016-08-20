@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.SymbolStore.Client
 {
@@ -74,11 +75,11 @@ namespace Microsoft.SymbolStore.Client
             }
         }
 
-        public static IDisposable LockFile(string fullPath)
+        public static async Task<IDisposable> LockFile(string fullPath)
         {
             IDisposable result = null;
             while ((result = TryLockFile(fullPath)) == null)
-                Thread.Sleep(100);
+                await Task.Delay(100);
 
             return result;
         }

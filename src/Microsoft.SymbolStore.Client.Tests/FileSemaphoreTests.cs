@@ -20,7 +20,7 @@ namespace Microsoft.SymbolStore.Client
 
             Assert.False(File.Exists(LockFile));
 
-            using (IDisposable lck = FileSemaphore.LockFile(FileName))
+            using (IDisposable lck = FileSemaphore.LockFile(FileName).Result)
             {
                 Assert.True(File.Exists(LockFile));
 
@@ -47,8 +47,8 @@ namespace Microsoft.SymbolStore.Client
             Assert.False(File.Exists(LockFile));
 
             EventWaitHandle handle = new EventWaitHandle(false, EventResetMode.ManualReset);
-            Task backgroundLockFile = new Task(() => { handle.Set(); FileSemaphore.LockFile(FileName).Dispose(); });
-            using (IDisposable lck = FileSemaphore.LockFile(FileName))
+            Task backgroundLockFile = new Task(() => { handle.Set(); FileSemaphore.LockFile(FileName).Result.Dispose(); });
+            using (IDisposable lck = FileSemaphore.LockFile(FileName).Result)
             {
                 backgroundLockFile.Start();
                 handle.WaitOne(); // 100% sure the task has had time to start
