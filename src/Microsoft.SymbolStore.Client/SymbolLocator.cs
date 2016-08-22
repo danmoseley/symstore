@@ -9,6 +9,7 @@ using FileFormats;
 
 namespace Microsoft.SymbolStore.Client
 {
+    /*
     public sealed class SymbolLocator
     {
         private static readonly string[] s_microsoftSymbolServerUrls = new string[]
@@ -23,7 +24,7 @@ namespace Microsoft.SymbolStore.Client
 
         private readonly ISymbolServer[] _symbolServers;
 
-        public SymbolCache Cache { get; private set; }
+        public SymbolStoreFileCache Cache { get; private set; }
         
         public static string DefaultSymbolCacheLocation
         {
@@ -34,7 +35,7 @@ namespace Microsoft.SymbolStore.Client
         }
 
         public SymbolLocator()
-            : this(new SymbolCache(DefaultSymbolCacheLocation), s_microsoftSymbolServers)
+            : this(new SymbolStoreFileCache(DefaultSymbolCacheLocation), s_microsoftSymbolServers)
         {
         }
 
@@ -147,5 +148,5 @@ namespace Microsoft.SymbolStore.Client
 
             return null;
         }
-    }
+    } */
 }

@@ -12,6 +12,7 @@ namespace Microsoft.SymbolStore.Client
 {
     public partial class Tests
     {
+        /*
         [Fact]
         public async void SymbolServerEndToEnd()
         {
@@ -59,5 +60,10 @@ namespace Microsoft.SymbolStore.Client
                 Assert.True(pe.Timestamp == PEFileTimestamp);
             }
         }
+
+        private WindowsSymbolSever CreateWindowsSymbolServer()
+        {
+            return new WindowsSymbolSever("http://msdl.microsoft.com/download/symbols");
+        }*/
     }
 }

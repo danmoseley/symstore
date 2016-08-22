@@ -9,6 +9,7 @@ namespace Microsoft.SymbolStore.Client
 {
     public partial class Tests
     {
+        /*
         readonly string CacheLocation = Path.Combine(Directory.GetCurrentDirectory(), @"test_output\cache");
         readonly byte[] FileData = new byte[] { 42, 0, 1, 2, 42 };
 
@@ -107,7 +108,7 @@ namespace Microsoft.SymbolStore.Client
             return ms;
         }
 
-
+        */
 
     }
 }
